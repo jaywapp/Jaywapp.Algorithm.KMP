@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Jaywapp.Algorithm.KMP
 {
@@ -6,51 +8,81 @@ namespace Jaywapp.Algorithm.KMP
     {
         static void Main(string[] args)
         {
-            RunPrefixFunction();
-            // RunStringMatch();
-        }
-
-        private static void RunPrefixFunction()
-        {
             while (true)
             {
-                Console.Write("pattern : ");
-                var pattern = Console.ReadLine();
-                if (pattern == "EOF")
-                    break;
+                Console.Write($"Type [PrefixFunction(P) or MatchString(M)] : ");
 
-                var array = PrefixAnalysis.Analyze(pattern);
-                var chars = pattern.ToCharArray();
+                var input = Console.ReadLine();
 
-                Console.WriteLine(string.Join(" | ", chars));
-                Console.WriteLine(string.Join(" | ", array));
+                if (input == "P")
+                {
+                    RunPrefixFunction();
+                }
+                else if (input == "M")
+                {
+                    RunStringMatch();
+                }
+            }
+        }
+
+        private static bool RunPrefixFunction()
+        {
+            Console.Write("pattern : ");
+            var pattern = Console.ReadLine();
+            if (pattern == "EOF")
+                return false;
+
+            var array = PrefixAnalysis.Analyze(pattern, out List<string> traces);
+            var chars = pattern.ToCharArray();
+
+            Console.WriteLine(string.Join(" | ", chars));
+            Console.WriteLine(string.Join(" | ", array));
+
+
+            Console.Write("Do you want to see traces? (Y/N) : ");
+            var answer = Console.ReadLine();
+
+            if (answer == "Y")
+                DisplayPrefixTraces(traces);
+
+            return true;
+        }
+
+        private static void DisplayPrefixTraces(List<string> traces)
+        {
+            Console.Write("Input delay time : ");
+
+            var answer = Console.ReadLine();
+            var time = int.TryParse(answer, out int t) ? t : 2;
+
+            foreach (var trace in traces)
+            {
+                Console.Clear();
+
+                Console.WriteLine(trace);
+                Thread.Sleep(time * 1000);
             }
 
-            Console.ReadLine();
+            Console.Clear();
         }
 
-
-        private static void RunStringMatch()
+        private static bool RunStringMatch()
         {
-            while (true)
-            {
-                Console.Write("text : ");
-                var text = Console.ReadLine();
-                if (text == "EOF")
-                    break;
-                Console.Write("pattern : ");
-                var pattern = Console.ReadLine();
-                if (pattern == "EOF")
-                    break;
+            Console.Write("text : ");
+            var text = Console.ReadLine();
+            if (text == "EOF")
+                return false;
+            Console.Write("pattern : ");
+            var pattern = Console.ReadLine();
+            if (pattern == "EOF")
+                return false;
 
-                if (!TryRun(BruthForce.Match, text, pattern, out int bruthForthIndex, out TimeSpan bruthForthPerformance)
+            if (!TryRun(BruthForce.Match, text, pattern, out int bruthForthIndex, out TimeSpan bruthForthPerformance)
                     || !TryRun(KnuthMorrisPratt.Match, text, pattern, out int kmpIndex, out TimeSpan kmpPerformance))
-                    break;
+                return false;
 
-                Report(bruthForthIndex, bruthForthPerformance, kmpIndex, kmpPerformance);
-            }
-
-            Console.ReadLine();
+            Report(bruthForthIndex, bruthForthPerformance, kmpIndex, kmpPerformance);
+            return true;
         }
 
         private static void Report(

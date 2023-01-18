@@ -1,4 +1,6 @@
-﻿namespace Jaywapp.Algorithm.KMP
+﻿using System.Collections.Generic;
+
+namespace Jaywapp.Algorithm.KMP
 {
     public static class KnuthMorrisPratt
     {
@@ -7,7 +9,7 @@
             int n = text.Length;
             int m = pattern.Length;
 
-            var array = PrefixAnalysis.Analyze(pattern);
+            var array = PrefixAnalysis.Analyze(pattern, out var _);
 
             int i = 0;
             int j = 0;
