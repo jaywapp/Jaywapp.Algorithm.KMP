@@ -6,30 +6,57 @@ namespace Jaywapp.Algorithm.KMP
 {
     public class PrefixAnalysis
     {
+        #region Const Field
         private const string TAB = "\t";
+        #endregion
 
-        public static int[] Analyze(string pattern, out List<string> stateTraces)
+        #region Internal Field
+        private readonly string _pattern;
+        #endregion
+
+        #region Properties
+        public int[] Values { get; private set; }
+        public List<string> Traces { get; private set; } = new List<string>();
+        #endregion
+
+        #region Constructor
+        public PrefixAnalysis(string pattern)
         {
-            stateTraces = new List<string>();
+            _pattern = pattern;
+            Values = new int[pattern.Length];
+        }
+        #endregion
 
-            var states = new List<string>();
-            var array = new int[pattern.Length];
+        #region Functions
+        public static int[] Analyze(string pattern)
+        {
+            var analysis = new PrefixAnalysis(pattern);
+            analysis.Analyze();
+            
+            return analysis.Values;
+        }
+
+        public void Analyze()
+        {
+            var array = new int[_pattern.Length];
 
             array[0] = 0;
             int i = 1;
             int j = 0;
 
+            var states = new List<string>();
+
             void AddState(string desc)
             {
-                states.Add(ToStateString(pattern, array, j, i, desc));
+                states.Add(ToStateString(_pattern, array, j, i, desc));
             }
 
-            while (i < pattern.Length)
+            while (i < _pattern.Length)
             {
-                var isMatched = pattern[i] == pattern[j];
+                var isMatched = _pattern[i] == _pattern[j];
 
-                AddState(isMatched ? $"{pattern[i]}, {pattern[j]} is same" : $"{pattern[i]}, {pattern[j]} is not same.");
-                
+                AddState(isMatched ? $"{_pattern[i]}, {_pattern[j]} is same" : $"{_pattern[i]}, {_pattern[j]} is not same.");
+
                 if (isMatched)
                 {
                     AddState($"array[{i}] = {j} + 1 and j, i increase.");
@@ -52,8 +79,8 @@ namespace Jaywapp.Algorithm.KMP
                 }
             }
 
-            stateTraces = states;
-            return array;
+            Traces = states;
+            Values = array;
         }
 
         public static string ToStateString(string pattern, int[] values, int j, int i, string description)
@@ -100,5 +127,7 @@ namespace Jaywapp.Algorithm.KMP
         private static string GetPatternArrayString(string pattern) => string.Join(TAB, pattern.ToCharArray());
 
         private static string GetValueArrayString(int[] values) => string.Join(TAB, values);
+
+        #endregion
     }
 }

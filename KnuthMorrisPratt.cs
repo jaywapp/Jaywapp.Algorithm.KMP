@@ -9,7 +9,7 @@ namespace Jaywapp.Algorithm.KMP
             int n = text.Length;
             int m = pattern.Length;
 
-            var array = PrefixAnalysis.Analyze(pattern, out var _);
+            var array = PrefixAnalysis.Analyze(pattern);
 
             int i = 0;
             int j = 0;

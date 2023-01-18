@@ -32,7 +32,11 @@ namespace Jaywapp.Algorithm.KMP
             if (pattern == "EOF")
                 return false;
 
-            var array = PrefixAnalysis.Analyze(pattern, out List<string> traces);
+            var analysis = new PrefixAnalysis(pattern);
+            analysis.Analyze();
+
+            var array = analysis.Values;
+            var traces = analysis.Traces;
             var chars = pattern.ToCharArray();
 
             Console.WriteLine(string.Join(" | ", chars));
