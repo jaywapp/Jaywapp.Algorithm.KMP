@@ -19,7 +19,7 @@ namespace Jaywapp.Algorithm.KMP
                 if (pattern == "EOF")
                     break;
 
-                var array = KnuthMorrisPratt.PrefixFunction(pattern);
+                var array = PrefixAnalysis.Analyze(pattern);
                 var chars = pattern.ToCharArray();
 
                 Console.WriteLine(string.Join(" | ", chars));
