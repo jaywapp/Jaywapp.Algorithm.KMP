@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{96F0959D-6775-4161-BA37-FCD5A2FFE88B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Jaywapp.KMP</RootNamespace>
-    <AssemblyName>Jaywapp.KMP</AssemblyName>
+    <RootNamespace>Jaywapp.Algorithm.KMP</RootNamespace>
+    <AssemblyName>Jaywapp.Algorithm.KMP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

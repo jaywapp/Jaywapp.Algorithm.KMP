@@ -1,4 +1,4 @@
-﻿namespace Jaywapp.KMP
+﻿namespace Jaywapp.Algorithm.KMP
 {
     public static class KnuthMorrisPratt
     {

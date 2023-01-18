@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jaywapp.KMP
+namespace Jaywapp.Algorithm.KMP
 {
     class Program
     {
