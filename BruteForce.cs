@@ -13,7 +13,7 @@
         {
             var count = _text.Length - _pattern.Length;
 
-            for(int i = 0; i< count; i++)
+            for(int i = 0; i<= count; i++)
             {
                 int j;
 
