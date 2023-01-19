@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisplayHelper.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="ITracable.cs" />
     <Compile Include="KnuthMorrisPratt.cs" />
     <Compile Include="PrefixAnalysis.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BruthForce.cs" />
+    <Compile Include="BruteForce.cs" />
+    <Compile Include="StringMatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
