@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Jaywapp.Algorithm.String;
+using Jaywapp.Algorithm.String.Base;
+using Jaywapp.Algorithm.String.KMP;
+using System;
 
 namespace Jaywapp.Algorithm.KMP
 {

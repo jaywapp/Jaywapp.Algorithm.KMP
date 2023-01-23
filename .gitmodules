@@ -1,0 +1,3 @@
+[submodule "Src/Jaywapp.Algorithm"]
+	path = Src/Jaywapp.Algorithm
+	url = git@github.com:jaywapp/Jaywapp.Algorithm.git

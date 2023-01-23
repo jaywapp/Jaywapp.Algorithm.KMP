@@ -43,19 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DisplayHelper.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="ITracable.cs" />
-    <Compile Include="KnuthMorrisPratt.cs" />
-    <Compile Include="PrefixAnalysis.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BruteForce.cs" />
-    <Compile Include="StringMatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="Src\Jaywapp.Algorithm\Jaywapp.Algorithm.csproj">
+      <Project>{B449DB9C-BED2-4C1A-942C-511800F28269}</Project>
+      <Name>Jaywapp.Algorithm</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
